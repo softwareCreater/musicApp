@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>music</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400;700&family=Pacifico&family=Piazzolla&family=Radio+Canada:wght@500&family=Rubik+Puddles&family=Source+Code+Pro:wght@500&family=Square+Peg&family=Water+Brush&family=Work+Sans&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Piazzolla", serif;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      #title {
+        font-size: 2rem;
+        font-weight: lighter;
+        color: #fff;
+      }
+      .title {
+        position: absolute;
+        top: 12rem;
+        text-transform: capitalize;
+      }
+      #artist {
+        font-size: 3.5rem;
+        top: 0;
+        text-transform: capitalize;
+        position: absolute;
+        font-weight: lighter;
+        top: 3rem;
+        color: #fff;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        flex-direction: column;
+        background: #f1f1f1;
+        background: rgb(4, 4, 44);
+        padding: 4rem 2rem;
+      }
+      #src {
+        background-color: #fff;
+        z-index: 3;
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+      }
+      .tracImage {
+        width: 30rem;
+        height: 30rem;
+        background: linear-gradient(90deg, cyan, maroon);
+        border-radius: 50%;
+        position: absolute;
+        animation: circle 6s linear infinite;
+      }
+      img {
+        width: 30rem;
+        height: 30rem;
+        border-radius: 50%;
+      }
+      @keyframes circle {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .btn {
+        width: 100vw;
+        text-align: center;
+        /* background: red; */
+        position: absolute;
+        bottom: 10rem;
+      }
+      button {
+        width: 12rem;
+        padding: 1rem 0.3rem;
+        /* height: 3rem; */
+        background: #fff;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="artist">artist</div>
+      <div class="title"> 
+        <marquee behavior="scroll" direction="left"
+          ><div id="title">title</div
+        ></marquee>
+      </div>
+      <div class="tracImage">
+        <img src="img/img.jpg" alt="" />
+      </div>
+      <div class="btn"><button id="nextBtn">Next</button></div>
+      <audio src="" id="src"autoplay></audio>
+    </div>
+    <script>
+      const mus_api = [
+        {
+          title: "Kabhi jo badal barse",
+          src: "song/kabhi.mp3",
+          imgSrc: "mypic.jpg",
+          artist: "Arijit singh",
+        },
+        {
+          title: "Aaj fir tumpe pyar aaya hai",
+          src: "song/a.mp3",
+          imgSrc: "mypic.jpg",
+          artist: "unknown",
+        },
+        {
+          title: "bheegi bheegi sadko pe",
+          src: "song/b.mp3",
+          imgSrc: "mypic.jpg",
+          artist: "arijit singh",
+        },
+        {
+          title: "Is kadar hamko",
+          src: "song/i.mp3",
+          imgSrc: "mypic.jpg",
+          artist: "Darshan ravel",
+        },
+        {
+          title: "Tum hi ho",
+          src: "song/t.mp3",
+          imgSrc: "mypic.jpg",
+          artist: "arijit singh",
+        },
+        {
+          title: "ashik banaya",
+          src: "song/ab.m4a",
+          imgSrc: "mypic.jpg",
+          artist: "himesh reshamiya",
+        },
+      ];
+      // console.log(mus_api[0].src)
+      const title = document.getElementById("title");
+      const src = document.getElementById("src");
+      const artist = document.getElementById("artist");
+
+      const nextBtn = document.getElementById("nextBtn");
+      const changeSong = () => {
+        const ran = Math.floor(Math.random(0, 5 > 6) * 10);
+        // artist.innerHTML = ran;
+        title.innerHTML = mus_api[ran].title;
+        src.src = mus_api[ran].src;
+        artist.innerHTML = mus_api[ran].artist;
+      };
+      nextBtn.addEventListener("click", changeSong);
+    </script>
+  </body>
+</html>
